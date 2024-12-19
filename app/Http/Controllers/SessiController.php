@@ -25,7 +25,7 @@ class SessiController extends Controller
         ];
 
         if(Auth::attempt($infologin)){
-            echo"sukses";
+            return redirect('admin');
         }else{
             return redirect('')->withErrors('Username dan password salah')->withInput();
         }
