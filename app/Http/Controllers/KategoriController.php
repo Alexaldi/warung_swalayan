@@ -51,6 +51,7 @@ class KategoriController extends Controller{
         return view('kategori.edit', compact('kategori'));
     }
 
+    //* query untuk mengupdate data kategori
     public function update(Request $request, string $id): RedirectResponse{
         //? validate form
         $request->validate([
@@ -69,6 +70,7 @@ class KategoriController extends Controller{
         return redirect()->route('kategori.index')->with(['success' => 'Kategori Berhasil Diubah!']);
     }
 
+    //* query untuk menghapus data kategori
     public function destroy(string $id): RedirectResponse{
         //? get category by ID
         $kategori = Kategori::findOrFail($id);
