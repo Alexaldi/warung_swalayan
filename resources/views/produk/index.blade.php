@@ -36,12 +36,9 @@
                                         <td class="text-center">
                                             <img src="{{asset('storage/produk/'.$produk->gambar)}}" class="rounded" style="width: 150px">
                                         </td>
-                                        {{-- @php
-                                            dd($produk);
-                                        @endphp --}}
                                         <td>{{ $produk->nama_barang}}</td>
                                         <td>{{ "Rp " . number_format($produk->harga,2,',','.') }}</td>
-                                        <td>{{ $produk->deskripsi }}</td>
+                                        <td>{!! $produk->deskripsi !!}</td>
                                         <td>{{ $produk->stok }}</td>
                                         <td>{{ $produk->kategori ? $produk->kategori->nama_kategori : 'Tidak ada kategori' }}</td>
                                         <td class="text-center">
