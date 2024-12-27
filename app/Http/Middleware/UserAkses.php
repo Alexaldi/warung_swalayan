@@ -14,11 +14,14 @@ class UserAkses
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next,$role): Response
-    {
+    public function handle(Request $request, Closure $next,$role): Response{
+
+        //? Cek role user
         if (Auth::user()->role == $role) {
-           return $next($request);
+           //! Jika role user sesuai dengan role yang diinginkan
+            return $next($request);
         }
+            //! Jika role user tidak sesuai dengan role yang diinginkan
         return redirect('home')->withErrors('Anda tidak memiliki akses ke halaman ini');
     }
 }

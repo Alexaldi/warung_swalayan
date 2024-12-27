@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\SessiController;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -15,11 +16,11 @@ Route::middleware([RedirectIfAuthenticated::class])->group(function () {
 //? Route untuk semua request yang membutuhkan autentikasi
 Route::middleware([Authenticate::class])->group(function () {
     //* Halaman Home
-    Route::get("/home",[KasirController::class,'index']);
+    Route::get("/home",[HomeController::class,'index']);
     //* Halaman ketika role Pelanggan login
-    Route::get("/home/pelanggan",[KasirController::class,'pelanggan'])->middleware('userAkses:pelanggan');
+    Route::get("/home/pelanggan",[HomeController::class,'pelanggan'])->middleware('userAkses:pelanggan');
     //* Halaman ketika role Kasir login
-    Route::get("/home/kasir",[KasirController::class,'kasir'])->middleware('userAkses:kasir');
+    Route::get("/home/kasir",[HomeController::class,'kasir'])->middleware('userAkses:kasir');
     //* method logout
     Route::get("/logout",[SessiController::class,'logout']);
     //* route untuk semua req produk
