@@ -16,6 +16,10 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get("/admin/pelanggan",[KasirController::class,'pelanggan'])->middleware('userAkses:pelanggan');
     Route::get("/admin/kasir",[KasirController::class,'kasir'])->middleware('userAkses:kasir');
     Route::get("/logout",[SessiController::class,'logout']);
+    //route resource for products
+    Route::resource('/admin/produk', \App\Http\Controllers\ProdukController::class);
 });
+
+
 
 
