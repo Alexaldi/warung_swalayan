@@ -46,4 +46,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Relasi untuk transaksi sebagai kasir
+    public function transactionsAsKasir()
+    {
+        return $this->hasMany(Transaksi::class, 'id_kasir');
+    }
+
+    // Relasi untuk transaksi sebagai member
+    public function transactionsAsMember()
+    {
+        return $this->hasMany(Transaksi::class, 'id_member');
+    }
 }

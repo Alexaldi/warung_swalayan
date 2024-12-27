@@ -23,8 +23,13 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get("/home/kasir",[HomeController::class,'kasir'])->middleware('userAkses:kasir');
     //* method logout
     Route::get("/logout",[SessiController::class,'logout']);
+
     //* route untuk semua req produk
     Route::resource('/home/produk', \App\Http\Controllers\ProdukController::class);
+    //* route untuk semua req transaksi
+    Route::resource('/home/transaksi', \App\Http\Controllers\TransactionController::class);
+    //* route untuk semua req kategori
+    Route::resource('/home/kategori', \App\Http\Controllers\KategoriController::class);
 });
 
 
