@@ -6,18 +6,24 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
+//? Route ketika user sudah login. Maka akan diarahkan ke halaman home
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {
     Route::get('/', [SessiController::class,'index'])->name('login');
     Route::post('/', [SessiController::class,'login']);
 });
 
+//? Route untuk semua request yang membutuhkan autentikasi
 Route::middleware([Authenticate::class])->group(function () {
-    Route::get("/admin",[KasirController::class,'index']);
-    Route::get("/admin/pelanggan",[KasirController::class,'pelanggan'])->middleware('userAkses:pelanggan');
-    Route::get("/admin/kasir",[KasirController::class,'kasir'])->middleware('userAkses:kasir');
+    //* Halaman Home
+    Route::get("/home",[KasirController::class,'index']);
+    //* Halaman ketika role Pelanggan login
+    Route::get("/home/pelanggan",[KasirController::class,'pelanggan'])->middleware('userAkses:pelanggan');
+    //* Halaman ketika role Kasir login
+    Route::get("/home/kasir",[KasirController::class,'kasir'])->middleware('userAkses:kasir');
+    //* method logout
     Route::get("/logout",[SessiController::class,'logout']);
-    //route resource for products
-    Route::resource('/admin/produk', \App\Http\Controllers\ProdukController::class);
+    //* route untuk semua req produk
+    Route::resource('/home/produk', \App\Http\Controllers\ProdukController::class);
 });
 
 

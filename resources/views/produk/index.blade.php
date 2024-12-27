@@ -34,17 +34,20 @@
                                 @forelse ($produks as $produk)
                                     <tr>
                                         <td class="text-center">
-                                            <img src="{{ asset('/storage/produks/'.$produk->gambar) }}" class="rounded" style="width: 150px">
+                                            <img src="{{asset('storage/produk/'.$produk->gambar)}}" class="rounded" style="width: 150px">
                                         </td>
-                                        <td>{{ $produk->nama_barang }}</td>
+                                        {{-- @php
+                                            dd($produk);
+                                        @endphp --}}
+                                        <td>{{ $produk->nama_barang}}</td>
                                         <td>{{ "Rp " . number_format($produk->harga,2,',','.') }}</td>
                                         <td>{{ $produk->deskripsi }}</td>
-                                        <td>{{ $produk->stock }}</td>
-                                        <td>{{ $produk->kategori_id }}</td>
+                                        <td>{{ $produk->stok }}</td>
+                                        <td>{{ $produk->kategori ? $produk->kategori->nama_kategori : 'Tidak ada kategori' }}</td>
                                         <td class="text-center">
-                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('produks.destroy', $produk->id) }}" method="POST">
-                                                <a href="{{ route('produks.show', $produk->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                                <a href="{{ route('produks.edit', $produk->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('produk.destroy', $produk->id) }}" method="POST">
+                                                <a href="{{ route('produk.show', $produk->id) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                                <a href="{{ route('produk.edit', $produk->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>

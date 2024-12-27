@@ -18,7 +18,7 @@ class RedirectIfAuthenticated
     {   
         if (Auth::guard($guard)->check()) {
             // Jika pengguna sudah login, redirect ke halaman dashboard
-            return redirect('/admin'); // Ganti dengan route yang sesuai
+            return redirect('/home'); // Ganti dengan route yang sesuai
         }
         return $next($request);
     }

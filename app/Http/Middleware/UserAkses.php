@@ -19,6 +19,6 @@ class UserAkses
         if (Auth::user()->role == $role) {
            return $next($request);
         }
-        return redirect('admin');
+        return redirect('home')->withErrors('Anda tidak memiliki akses ke halaman ini');
     }
 }
