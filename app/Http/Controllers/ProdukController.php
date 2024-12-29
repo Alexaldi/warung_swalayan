@@ -137,7 +137,7 @@ class ProdukController extends Controller{
         $produk = Produk::findOrFail($id);
 
         //? delete image
-        Storage::delete('public/produk/'. $produk->image);
+        Storage::delete('public/produk/'.$produk->gambar);
 
         //? delete produk
         $produk->delete();

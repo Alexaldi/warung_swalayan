@@ -20,6 +20,7 @@
                 <th>Sub Total</th>
                 <th>Bayar</th>
                 <th>Kembalian</th>
+                <th>Action</th> <!-- Menambahkan kolom Action -->
             </tr>
         </thead>
         <tbody>
@@ -35,12 +36,13 @@
                     <td>{{ number_format($item->sub_total, 2) }}</td>
                     <td>{{ number_format($item->bayar, 2) }}</td>
                     <td>{{ number_format($item->kembalian, 2) }}</td>
+                    <td><a href="{{ route('transaksi.show', $item->id) }}">Show</a></td> <!-- Menambahkan link Show -->
                 </tr>
             @endforeach
         </tbody>
     </table>
-
-    <!-- Pagination Links -->
-    {{ $transaksi->links() }}
 </body>
 </html>
+<a href="{{ route('transaksi.create') }}">
+    <button>Tambah Transaksi</button>
+</a>
