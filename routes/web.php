@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {
     Route::get('/', [SessiController::class,'index'])->name('login');
     Route::post('/', [SessiController::class,'login']);
+    Route::get('/register', [SessiController::class,'register'])->name('register');
+    Route::post('/register', [SessiController::class,'registerStore']);
 });
 
 //? Route untuk semua request yang membutuhkan autentikasi

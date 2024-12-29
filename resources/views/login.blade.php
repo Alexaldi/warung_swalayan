@@ -34,6 +34,9 @@
             <div class="mb-3 d-grid">
                 <button name="submit" type="submit" class="btn btn-primary">Login</button>
             </div>
+            <div class="mb-3 text-center">
+                <p>Don't have an account? <a href="{{ route('register') }}" class="btn btn-link">Register here</a></p>
+            </div>
         </form>
     </div> 
     </div>
