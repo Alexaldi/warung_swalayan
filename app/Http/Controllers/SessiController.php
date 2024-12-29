@@ -34,7 +34,7 @@ class SessiController extends Controller{
         if(Auth::attempt($infologin)){
             //? Cek role user
             if (Auth::user()->role == 'kasir') {
-                return redirect('home/kasir');
+                return redirect('home/kasirPage');
             }else if(Auth::user()->role == 'pelanggan'){
                 return redirect('home/pelanggan');
             }

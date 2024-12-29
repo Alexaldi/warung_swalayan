@@ -22,7 +22,7 @@ Route::middleware([Authenticate::class])->group(function () {
     //* Halaman ketika role Pelanggan login
     Route::get("/home/pelanggan",[HomeController::class,'pelanggan'])->middleware('userAkses:pelanggan');
     //* Halaman ketika role Kasir login
-    Route::get("/home/kasir",[HomeController::class,'kasir'])->middleware('userAkses:kasir');
+    Route::get("/home/kasirPage",[HomeController::class,'kasir'])->middleware('userAkses:kasir');
     //* method logout
     Route::get("/logout",[SessiController::class,'logout']);
 
@@ -32,6 +32,12 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::resource('/home/transaksi', \App\Http\Controllers\TransactionController::class);
     //* route untuk semua req kategori
     Route::resource('/home/kategori', \App\Http\Controllers\KategoriController::class);
+    //* route untuk semua req pelanggan
+    Route::resource('/home/pelanggan', \App\Http\Controllers\PelangganController::class);
+    //* route untuk semua req kasir
+    Route::resource('/home/kasir', \App\Http\Controllers\KasirController::class);
+    //* route untuk semua req admin
+    Route::resource('/home/admin', \App\Http\Controllers\AdminController::class);
 });
 
 
