@@ -74,7 +74,7 @@ class pelangganController extends Controller
         // Find the user
         $pelanggan = User::findOrFail($id);
 
-        // Validasi inputan
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $pelanggan->id,
